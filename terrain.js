@@ -57,7 +57,7 @@ function init() {
 
     
     controls = new THREE.FirstPersonControls(camera);
-    controls.movementSpeed = 500;
+    controls.movementSpeed = 800;
     controls.lookSpeed = 0.1;
 
     data = generateHeight(worldWidth, worldDepth);
