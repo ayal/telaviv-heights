@@ -55,13 +55,11 @@ function init() {
 
     scene = new THREE.Scene();
 
-    
     controls = new THREE.FirstPersonControls(camera);
     controls.movementSpeed = 800;
     controls.lookSpeed = 0.1;
 
     data = generateHeight(worldWidth, worldDepth);
-
 
     camera.position.y = zeropoint.y;
     camera.position.x = zeropoint.x;
