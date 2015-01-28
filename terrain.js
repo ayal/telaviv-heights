@@ -211,7 +211,7 @@ function generateTexture(data, width, height) {
     image = context.getImageData(0, 0, canvasScaled.width, canvasScaled.height);
     imageData = image.data;
 
-    for ( var i = 0, l = imageData.length; i < l; i += 4 ) {
+/*    for ( var i = 0, l = imageData.length; i < l; i += 4 ) {
 
 	var v = ~~ ( Math.random() * 5 );
 
@@ -219,7 +219,7 @@ function generateTexture(data, width, height) {
 	imageData[ i + 1 ] += v;
 	imageData[ i + 2 ] += v;
 
-    }
+    }*/
 
     context.putImageData(image, 0, 0);
     
