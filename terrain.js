@@ -243,9 +243,9 @@ function animate() {
     deltax = camera.position.x - zeropoint.x;
     deltay = camera.position.z - zeropoint.z;
     mapdomainx = 34.798637 - 34.743147;
-    mapdomainy = 32.097765 - (32.097765 - 255 * 0.00035)
+    mapdomainy = 32.120765 - (32.120765 - 255 * 0.0003339453125)
     newmapx = 34.743147 + (deltax / 7500) * mapdomainx;
-    newmapy = 32.097765 - (deltay / 7500) * mapdomainy;
+    newmapy = 32.120765 - (deltay / 7500) * mapdomainy;
     if (prevmapx !== newmapx && prevmapy !== newmapy) {
 	prevmapx = newmapx;
 	prevmapy = newmapy;
