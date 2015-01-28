@@ -179,13 +179,13 @@ function generateTexture(data, width, height) {
 	shade = vector3.dot(sun);
 	if (!bigdata[j] || bigdata[j] <= 0.15) {
 	    imageData[i] = 0;
-	    imageData[i + 1] = 100 * bigdata[j];
+	    imageData[i + 1] = 1000 * bigdata[j];
 	    
 	    imageData[i + 2] = 100; 
 	}
 	else if (!bigdata[j] || bigdata[j] > 33) {
 	    imageData[i] = (46 + shade * 128) * (0.5 + data[j] * 0.007);
-	    imageData[i + 1] = 100;
+	    imageData[i + 1] = (46 + shade * 128) * (0.5 + data[j] * 0.007);
 	    imageData[i + 2] = 0;	    
 	}
 	else {
