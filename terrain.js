@@ -253,10 +253,16 @@ console.log('setting map center', newmapx, newmapy);
 
 
   }
+
+    var pLocal = new THREE.Vector3( 0, 0, -1 );
+    var pWorld = pLocal.applyMatrix4( camera.matrixWorld );
+    var dir = pWorld.sub( camera.position ).normalize();
+    
+
      marker.setIcon({
     path:google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
     scale:3,
-    rotation: camera.rotation.z * 180 / Math.PI * -1
+    rotation: Math.atan2(dir.z, dir.x) * 180 / Math.PI + 90
   })  
 }
 
