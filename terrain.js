@@ -257,8 +257,7 @@ console.log('setting map center', newmapx, newmapy);
     path:google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
     scale:3,
     rotation: camera.rotation.z * 180 / Math.PI * -1
-  })
-   
+  })  
 }
 
 function render() {
