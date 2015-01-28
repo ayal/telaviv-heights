@@ -73,11 +73,11 @@ function init() {
 
     var vertices = geometry.attributes.position.array;
 
-    for (var i = 0, j = 0, l = vertices.length; i < l; i++, j += 3) {
+/*    for (var i = 0, j = 0, l = vertices.length; i < l; i++, j += 3) {
 
 	vertices[j + 1] = data[i] * 10;
 
-    }
+    }*/
 
     texture = new THREE.Texture(generateTexture(data, worldWidth, worldDepth), THREE.UVMapping, THREE.ClampToEdgeWrapping, THREE.ClampToEdgeWrapping);
     
@@ -177,7 +177,7 @@ function generateTexture(data, width, height) {
 
 
 	shade = vector3.dot(sun);
-	if (!bigdata[j] || bigdata[j] <= 0.15) {
+	if (!bigdata[j] || bigdata[j] <= 0.55) {
 	    imageData[i] = 0;
 	    imageData[i + 1] = 1000 * bigdata[j];
 	    
