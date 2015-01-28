@@ -75,7 +75,7 @@ function init() {
 
     for (var i = 0, j = 0, l = vertices.length; i < l; i++, j += 3) {
 
-	vertices[j + 1] = data[i] * 6;
+	vertices[j + 1] = data[i] * 10;
 
     }
 
@@ -177,7 +177,7 @@ function generateTexture(data, width, height) {
 
 
 	shade = vector3.dot(sun);
-	if (!bigdata[j] || bigdata[j] <= 0.55) {
+	if (!bigdata[j] || bigdata[j] <= 1.55) {
 	    imageData[i] = 0;
 	    imageData[i + 1] = 1000 * bigdata[j];
 	    
