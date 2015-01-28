@@ -183,9 +183,9 @@ function generateTexture(data, width, height) {
 	    
 	    imageData[i + 2] = 100; 
 	}
-	else if (!bigdata[j] || bigdata[j] > 30) {
+	else if (!bigdata[j] || bigdata[j] > 33) {
 	    imageData[i] = (46 + shade * 128) * (0.5 + data[j] * 0.007);
-	    imageData[i + 1] = (46 + shade * 128) * (0.5 + data[j] * 0.007);
+	    imageData[i + 1] = 100;
 	    imageData[i + 2] = 0;	    
 	}
 	else {
