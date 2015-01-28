@@ -56,7 +56,7 @@ function init() {
     scene = new THREE.Scene();
 
     
-    controls = new THREE.FlyPersonControls(camera);
+    controls = new THREE.FlyControls(camera);
     controls.movementSpeed = 800;
     controls.lookSpeed = 0.1;
 
