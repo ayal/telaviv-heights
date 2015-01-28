@@ -1,0 +1,37 @@
+  html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+
+#map-canvas {
+ width:300px;
+ position:absolute; 
+  
+}
+
+body {
+	  background:black;
+				color: #61443e;
+				font-family:Monospace;
+				font-size:13px;
+				text-align:center;
+
+				margin: 0px;
+				overflow: hidden;
+      position:relative;
+      width:100%;
+			}
+
+
+#info {
+				position: absolute;
+				top: 0px; width: 100%;
+				padding: 5px;
+  font-size:20px
+			}
+
+#container {
+  width:100%;
+}
+
