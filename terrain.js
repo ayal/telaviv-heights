@@ -73,11 +73,11 @@ function init() {
 
     var vertices = geometry.attributes.position.array;
 
-/*    for (var i = 0, j = 0, l = vertices.length; i < l; i++, j += 3) {
+    for (var i = 0, j = 0, l = vertices.length; i < l; i++, j += 3) {
 
-	vertices[j + 1] = data[i] * 10;
+	vertices[j + 1] = data[i];
 
-    }*/
+    }
 
     texture = new THREE.Texture(generateTexture(data, worldWidth, worldDepth), THREE.UVMapping, THREE.ClampToEdgeWrapping, THREE.ClampToEdgeWrapping);
     
