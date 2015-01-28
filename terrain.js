@@ -64,7 +64,7 @@ function init() {
     camera.position.y = zeropoint.y;
     camera.position.x = zeropoint.x;
     camera.position.z = zeropoint.z;
-
+    camera.lookAt(new THREE.Vector3(0,0,0));
     
     var geometry = new THREE.PlaneBufferGeometry(7500, 7500, worldWidth - 1, worldDepth - 1);
     geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI / 2));
@@ -73,7 +73,7 @@ function init() {
 
     for (var i = 0, j = 0, l = vertices.length; i < l; i++, j += 3) {
 
-	vertices[j + 1] = data[i] * 10;
+	vertices[j + 1] = data[i];
 
     }
 
