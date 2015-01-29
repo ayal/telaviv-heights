@@ -2,7 +2,7 @@
 
 var nwest = new google.maps.LatLng(32.097765, 34.743147)
 var mapOptions = {
-    zoom: 1,
+    zoom: 17,
     center: nwest
 }
 map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
