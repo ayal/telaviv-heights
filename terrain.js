@@ -44,7 +44,7 @@ worldHalfDepth = worldDepth / 2;
 
 var clock = new THREE.Clock();
 
-zeropoint = {x: -3750, z: -3750, y: 1000}
+zeropoint = {x: -10000, z: -10000, y: 1000}
 
 function init() {
 
@@ -65,7 +65,7 @@ function init() {
     camera.position.z = zeropoint.z;
     camera.lookAt(new THREE.Vector3(0,0,0));
     
-    var geometry = new THREE.PlaneBufferGeometry(7500, 7500, worldWidth - 1, worldDepth - 1);
+    var geometry = new THREE.PlaneBufferGeometry(20000, 20000, worldWidth - 1, worldDepth - 1);
     geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI / 2));
 
     var vertices = geometry.attributes.position.array;
@@ -241,8 +241,8 @@ function animate() {
     deltay = camera.position.z - zeropoint.z;
     mapdomainx = 34.828637 - 34.743147;
     mapdomainy = 32.120765 - (32.120765 - 255 * 0.0003339453125)
-    newmapx = 34.743147 + (deltax / 7500) * mapdomainx;
-    newmapy = 32.120765 - (deltay / 7500) * mapdomainy;
+    newmapx = 34.743147 + (deltax / 20000) * mapdomainx;
+    newmapy = 32.120765 - (deltay / 20000) * mapdomainy;
     if (prevmapx !== newmapx && prevmapy !== newmapy) {
 	prevmapx = newmapx;
 	prevmapy = newmapy;
