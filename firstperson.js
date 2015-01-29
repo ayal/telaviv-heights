@@ -14,7 +14,7 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 	this.enabled = true;
 
 	this.movementSpeed = 1.0;
-	this.lookSpeed = 0.001;
+	this.lookSpeed = 0.0005;
 
 	this.lookVertical = true;
 	this.autoForward = false;
