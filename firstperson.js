@@ -213,7 +213,7 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 		if ( this.moveDown ) this.object.translateY( - actualMoveSpeed );
 
 //		var actualLookSpeed = delta * this.lookSpeed;
-		var actualLookSpeed = 0; //this.lookSpeed;
+		var actualLookSpeed = 0.05; //this.lookSpeed;
 
 		if ( !this.activeLook ) {
 
