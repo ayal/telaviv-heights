@@ -72,7 +72,7 @@ function init() {
 
     for (var i = 0, j = 0, l = vertices.length; i < l; i++, j += 3) {
 
-	vertices[j + 1] = data[i] * 15;
+	vertices[j + 1] = data[i] * 18;
 
     }
 
