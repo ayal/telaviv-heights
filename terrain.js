@@ -30,6 +30,44 @@ if (!Detector.webgl) {
 
 }
 
+$.yooshpost = function (cb) {
+
+    var data =  {
+	"SearchFilters": {
+         "location": {
+          "$type": "Yoosh.SharedClasses.YooshLocation, YooshSharedClassesDll",
+          "Latitude": "32.097765",
+          "Longitude": "34.743147"
+        },
+        "time": "2015-02-02T00:38:14+02:00"
+      }
+    };
+
+  var args = {
+    "APIKey": "1.0.0___3659E990-DDBB-42F6-B9DA-5E39B301FE74",
+    "DeviceType": 2,
+    "DeviceId": null,
+    "RequestingUserId": "00000000-0000-0000-0000-000000000001"
+  };
+  args = _.extend(args, data);
+
+  return $.ajax({
+    url: 'http://api.yoosh.io:8000/yoosh/yooshfeservice/json2/getEventsGTFast',
+    type: 'post',
+    data: JSON.stringify(args),
+    headers: {
+	      /*      Authorization: session, */
+      "Content-Type": "application/json"
+    },
+    success: function (data) {
+      cb(data);
+    },
+    error: function (error, ajaxOptions, thrownError) {
+      console.log("AJAX Error!", thrownError);
+    }
+  });
+};
+
 
 var container, stats;
 
