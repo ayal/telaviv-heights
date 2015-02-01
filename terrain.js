@@ -142,7 +142,7 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 	    return {x: worldx,z: worldz};
 	};
 
-	$yooshpost(function(r){
+	$.yooshpost(function(r){
 		$.each(r.ResultSet.Events, function(i,e){
 			var l = e.Venue.Location;
 			var trns = translate(l.Latitude, l.Longitude);
