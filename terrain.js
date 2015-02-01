@@ -83,7 +83,7 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 	mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
 		    map: texture
 		}));
-		scene.add(mesh);
+	scene.add(mesh);
 
 	var manager = new THREE.LoadingManager();
 	manager.onProgress = function ( item, loaded, total ) {
@@ -122,7 +122,10 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 	var geometry1 = new THREE.CubeGeometry( 1000, 1000, 1000 );	
 	var material1 = new THREE.MeshBasicMaterial( { color: 0x000000 } );
 	var mesh1 = new THREE.Mesh( geometry1, material1 );
-	
+	mesh1.position.x = 0;
+	mesh1.position.z = 0;
+	mesh1.position.y = 1000;
+
 	//scene is global
 	scene.add(mesh1);
 
