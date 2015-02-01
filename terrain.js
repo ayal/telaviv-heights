@@ -97,11 +97,11 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 	    }
 	};
 
-	var texture = new THREE.Texture();
+	var texture1 = new THREE.Texture();
 	var loader = new THREE.ImageLoader( manager );
 	loader.load( 'eiffel/OLDMETAL.JPG', function ( image ) {
-		texture.image = image;
-		texture.needsUpdate = true;
+		texture1.image = image;
+		texture1.needsUpdate = true;
 	    } );
 
 	var loader = new THREE.OBJLoader( manager );
@@ -109,7 +109,7 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 		object.traverse( function ( child ) {
 
 			if ( child instanceof THREE.Mesh ) {
-			    child.material.map = texture;
+			    child.material.map = texture1;
 			}
 		    } );
 
