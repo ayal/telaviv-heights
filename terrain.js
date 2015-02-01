@@ -85,6 +85,11 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 		}));
 	scene.add(mesh);
 
+	var manager = new THREE.LoadingManager();
+	manager.onProgress = function ( item, loaded, total ) {
+	    console.log( item, loaded, total );
+	};
+
 	var loader = new THREE.OBJLoader( manager );
 	loader.load( 'eiffel/effel-tower.obj', function ( object ) {
 		object.traverse( function ( child ) {
