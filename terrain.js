@@ -103,7 +103,7 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 		    } );
 		object.position.y = - 80;
 		scene.add( object );
-	    }, onProgress, onError );
+	    }, onProgress, function(){console.log('error loading obj')} );
 
 	renderer = new THREE.WebGLRenderer();
 	renderer.setClearColor(0xbfd1e5);
