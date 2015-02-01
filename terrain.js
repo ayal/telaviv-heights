@@ -150,6 +150,8 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 			mesh1.position.x = trns.x;
 			mesh1.position.z = trns.z;
 			mesh1.position.y = 2000;
+			mesh1.yoosh = e;
+
 			objects.push(mesh1);
 			scene.add(mesh1);
 		    });
@@ -168,7 +170,8 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 	    var intersects = raycaster.intersectObjects( objects );
 	    if ( intersects.length > 0 ) {
 		intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
-		window.open('http://www.google.com');
+		console.log(intersects[ 0 ].object.yoosh);
+		    //window.open('http://www.google.com');
 	    }
 	}
 
@@ -334,7 +337,6 @@ function animate() {
     if (prevmapx !== newmapx && prevmapy !== newmapy) {
 	prevmapx = newmapx;
 	prevmapy = newmapy;
-	console.log('setting map center', newmapx, newmapy);
 	var newlatlng = new google.maps.LatLng(newmapy, newmapx)
 	    map.panTo(newlatlng);
 	
