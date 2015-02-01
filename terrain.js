@@ -90,6 +90,13 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 	    console.log( item, loaded, total );
 	};
 
+	var onProgress = function ( xhr ) {
+	    if ( xhr.lengthComputable ) {
+		var percentComplete = xhr.loaded / xhr.total * 100;
+		console.log( Math.round(percentComplete, 2) + '% downloaded' );
+	    }
+	};
+
 	var loader = new THREE.OBJLoader( manager );
 	loader.load( 'eiffel/effel-tower.obj', function ( object ) {
 		object.traverse( function ( child ) {
