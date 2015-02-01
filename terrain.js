@@ -133,9 +133,6 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 	    mapdomainx = 34.828637 - 34.743147;
 	    mapdomainy = 32.120765 - (32.120765 - 255 * 0.0003339453125);
 
-	    newmapx = 34.743147 + (deltax / 20000) * mapdomainx;
-	    newmapy = 32.120765 - (deltay / 20000) * mapdomainy;
-
 	    worldx = -10000 + (delta_lat / (32.120765 - (32.120765 - 255 * 0.0003339453125))) * 20000;
 	    worldz = -10000 + (delta_lng / (34.828637 - 34.743147)) * 20000;
 
@@ -154,7 +151,7 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 			mesh1.position.z = trns.z;
 			mesh1.position.y = 2000;
 			objects.push(mesh1);
-
+			scene.add(mesh1);
 		    });
 	    });
 
@@ -175,8 +172,6 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 	    }
 	}
 
-	//scene is global
-	scene.add(mesh1);
 
 	renderer = new THREE.WebGLRenderer();
 	renderer.setClearColor(0xbfd1e5);
