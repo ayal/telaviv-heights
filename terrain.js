@@ -97,11 +97,22 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 	    }
 	};
 
+	var texture = new THREE.Texture();
+	var loader = new THREE.ImageLoader( manager );
+	loader.load( 'eiffel/OLDMETAL.JPG', function ( image ) {
+		texture.image = image;
+		texture.needsUpdate = true;
+	    } );
+
 	var loader = new THREE.OBJLoader( manager );
 	loader.load( 'eiffel/effel-tower.obj', function ( object ) {
 		object.traverse( function ( child ) {
+
+			if ( child instanceof THREE.Mesh ) {
+			    child.material.map = texture;
+			}
 		    } );
-		object.position.y = - 80;
+		object.position.y = 80;
 		scene.add( object );
 	    }, onProgress, function(){console.log('error loading obj')} );
 
