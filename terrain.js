@@ -84,13 +84,14 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 		    map: texture
 		}));
 	scene.add(mesh);
-
+	objects = [];
 	var geometry1 = new THREE.CubeGeometry( 200, 200, 200 );	
 	var material1 = new THREE.MeshBasicMaterial( { color: 0xaa0000 } );
 	var mesh1 = new THREE.Mesh( geometry1, material1 );
 	mesh1.position.x = -1500
 	mesh1.position.z = 2500;
 	mesh1.position.y = 2000;
+	objects.push(mesh1);
 
 	raycaster = new THREE.Raycaster();
 	mouse = new THREE.Vector2();
