@@ -119,10 +119,8 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 	    }, onProgress, function(){console.log('error loading obj')} );
 
 
-	var geometry1 = new THREE.CubeGeometry( 200, 200, 200 );
-	
+	var geometry1 = new THREE.CubeGeometry( 1000, 1000, 1000 );	
 	var material1 = new THREE.MeshBasicMaterial( { color: 0x000000 } );
-	
 	var mesh1 = new THREE.Mesh( geometry1, material1 );
 	
 	//scene is global
