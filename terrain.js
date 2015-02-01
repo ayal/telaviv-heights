@@ -119,12 +119,12 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 	    }, onProgress, function(){console.log('error loading obj')} );
 
 
-	var geometry1 = new THREE.CubeGeometry( 1000, 1000, 1000 );	
-	var material1 = new THREE.MeshBasicMaterial( { color: 0x000000 } );
+	var geometry1 = new THREE.CubeGeometry( 200, 200, 200 );	
+	var material1 = new THREE.MeshBasicMaterial( { color: 0xaa0000 } );
 	var mesh1 = new THREE.Mesh( geometry1, material1 );
-	mesh1.position.x = 0;
-	mesh1.position.z = 0;
-	mesh1.position.y = 1000;
+	mesh1.position.x = -1500
+	mesh1.position.z = 2500;
+	mesh1.position.y = 2000;
 
 	//scene is global
 	scene.add(mesh1);
