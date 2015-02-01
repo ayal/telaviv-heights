@@ -145,7 +145,7 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 			var trns = translate(l.Latitude, l.Longitude);
 
 			var geometry1 = new THREE.CubeGeometry( 200, 200, 200 );	
-			var material1 = new THREE.MeshBasicMaterial( { color: 0xaa0000 } );
+			var material1 = new THREE.MeshNormalMaterial();
 			var mesh1 = new THREE.Mesh( geometry1, material1 );
 			mesh1.position.x = trns.x;
 			mesh1.position.z = trns.z;
