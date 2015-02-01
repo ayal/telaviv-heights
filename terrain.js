@@ -149,7 +149,7 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 			var mesh1 = new THREE.Mesh( geometry1, material1 );
 			mesh1.position.x = trns.x;
 			mesh1.position.z = trns.z;
-			mesh1.position.y = 2000;
+			mesh1.position.y = Math.floor(Math.random() * 1000) + 1000;
 			mesh1.yoosh = e;
 
 			objects.push(mesh1);
