@@ -113,8 +113,6 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 			}
 		    } );
 
-		object.position.y = zeropoint.y;
-
 		scene.add( object );
 	    }, onProgress, function(){console.log('error loading obj')} );
 
