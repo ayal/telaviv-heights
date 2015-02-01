@@ -118,6 +118,16 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 		//		scene.add( object );
 	    }, onProgress, function(){console.log('error loading obj')} );
 
+
+	var geometry1 = new THREE.CubeGeometry( 200, 200, 200 );
+	
+	var material1 = new THREE.MeshBasicMaterial( { color: 0x000000 } );
+	
+	var mesh1 = new THREE.Mesh( geometry1, material1 );
+	
+	//scene is global
+	scene.add(mesh1);
+
 	renderer = new THREE.WebGLRenderer();
 	renderer.setClearColor(0xbfd1e5);
 	renderer.setPixelRatio(window.devicePixelRatio);
