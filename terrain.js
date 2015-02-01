@@ -172,6 +172,9 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 		intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
 		console.log(intersects[ 0 ].object.yoosh);
 		window.open(intersects[ 0 ].object.yoosh.Sources[0]);
+		event.preventDefault();
+		return false;
+		
 	    }
 	}
 
