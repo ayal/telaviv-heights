@@ -169,6 +169,7 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 	    raycaster.setFromCamera( mouse, camera );
 	    var intersects = raycaster.intersectObjects( objects );
 	    if ( intersects.length > 0 ) {
+		rotateit = intersects[ 0 ];
 		console.log(intersects[ 0 ].object.yoosh);
 		window.open(intersects[ 0 ].object.yoosh.Sources[0]);
 		event.preventDefault();
@@ -361,6 +362,9 @@ function animate() {
 	}
 
 function render() {
+    rotateit.rotation.x += 0.02;
+    rotateit.rotation.y += 0.0225;
+    rotateit.rotation.z += 0.0175;
 
     controls.update(clock.getDelta());
     renderer.render(scene, camera);
