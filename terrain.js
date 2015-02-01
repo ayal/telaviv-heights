@@ -128,7 +128,7 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 
 	var translate = function (lat, lng) {
 	    delta_lat = lat - 32.120765;
-	    deltay_lng = lng - 34.743147;
+	    delta_lng = lng - 34.743147;
 
 	    mapdomainx = 34.828637 - 34.743147;
 	    mapdomainy = 32.120765 - (32.120765 - 255 * 0.0003339453125);
