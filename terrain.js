@@ -106,18 +106,9 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 	    var intersects = raycaster.intersectObjects( objects );
 	    if ( intersects.length > 0 ) {
 		intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
-		var particle = new THREE.Sprite( particleMaterial );
-		particle.position.copy( intersects[ 0 ].point );
-		particle.scale.x = particle.scale.y = 16;
-		scene.add( particle );
+		window.open('http://www.google.com');
 	    }
-	    /*
-	    // Parse all the faces
-	    for ( var i in intersects ) {
-	    intersects[ i ].face.material[ 0 ].color.setHex( Math.random() * 0xffffff | 0x80000000 );
-	    }
-	    */
-	}
+/	}
 
 	//scene is global
 	scene.add(mesh1);
