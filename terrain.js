@@ -362,7 +362,7 @@ function animate() {
 	}
 
 function render() {
-    if (rotateit) {
+    if (window.rotateit) {
 	rotateit.rotation.x += 0.02;
 	rotateit.rotation.y += 0.0225;
 	rotateit.rotation.z += 0.0175;
