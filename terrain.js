@@ -85,46 +85,38 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 		}));
 	scene.add(mesh);
 
-	var manager = new THREE.LoadingManager();
-	manager.onProgress = function ( item, loaded, total ) {
-	    console.log( item, loaded, total );
-	};
-
-	var onProgress = function ( xhr ) {
-	    if ( xhr.lengthComputable ) {
-		var percentComplete = xhr.loaded / xhr.total * 100;
-		console.log( Math.round(percentComplete, 2) + '% downloaded' );
-	    }
-	};
-
-	var texture1 = new THREE.Texture();
-	var loader = new THREE.ImageLoader( manager );
-	loader.load( 'eiffel/OLDMETAL.JPG', function ( image ) {
-		texture1.image = image;
-		texture1.needsUpdate = true;
-	    } );
-
-	var loader = new THREE.OBJLoader( manager );
-	loader.load( 'eiffel/effel-tower.obj', function ( object ) {
-		object.traverse( function ( child ) {
-
-			if ( child instanceof THREE.Mesh ) {
-			    child.material.map = texture1;
-			}
-		    } );
-
-		object.position.y = -1000;
-
-		//		scene.add( object );
-	    }, onProgress, function(){console.log('error loading obj')} );
-
-
 	var geometry1 = new THREE.CubeGeometry( 200, 200, 200 );	
 	var material1 = new THREE.MeshBasicMaterial( { color: 0xaa0000 } );
 	var mesh1 = new THREE.Mesh( geometry1, material1 );
 	mesh1.position.x = -1500
 	mesh1.position.z = 2500;
 	mesh1.position.y = 2000;
+
+	raycaster = new THREE.Raycaster();
+	mouse = new THREE.Vector2();
+
+	document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+
+	function onDocumentMouseDown( event ) {
+	    event.preventDefault();
+	    mouse.x = ( event.clientX / renderer.domElement.width ) * 2 - 1;
+	    mouse.y = - ( event.clientY / renderer.domElement.height ) * 2 + 1;
+	    raycaster.setFromCamera( mouse, camera );
+	    var intersects = raycaster.intersectObjects( objects );
+	    if ( intersects.length > 0 ) {
+		intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+		var particle = new THREE.Sprite( particleMaterial );
+		particle.position.copy( intersects[ 0 ].point );
+		particle.scale.x = particle.scale.y = 16;
+		scene.add( particle );
+	    }
+	    /*
+	    // Parse all the faces
+	    for ( var i in intersects ) {
+	    intersects[ i ].face.material[ 0 ].color.setHex( Math.random() * 0xffffff | 0x80000000 );
+	    }
+	    */
+	}
 
 	//scene is global
 	scene.add(mesh1);
