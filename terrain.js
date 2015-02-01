@@ -1,27 +1,27 @@
 //noprotect 
 
 var nwest = new google.maps.LatLng(32.097765, 34.743147)
-var mapOptions = {
+    var mapOptions = {
     zoom: 17,
     center: nwest
 }
-map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
 
 
 
 var marker = new google.maps.Marker({
-    position: nwest,
-    icon: {
-	path:google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-	scale:2,
-	rotation:0
+	position: nwest,
+	icon: {
+	    path:google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+	    scale:2,
+	    rotation:0
 	
-    },
+	},
 
-    map: map,
-    title: 'Hello World!'
-});
+	map: map,
+	title: 'Hello World!'
+    });
 
 if (!Detector.webgl) {
 
@@ -38,72 +38,80 @@ var camera, controls, scene, renderer;
 var mesh, texture;
 
 var worldWidth = 256,
-worldDepth = 256,
-worldHalfWidth = worldWidth / 2,
-worldHalfDepth = worldDepth / 2;
+    worldDepth = 256,
+    worldHalfWidth = worldWidth / 2,
+    worldHalfDepth = worldDepth / 2;
 
 var clock = new THREE.Clock();
 
 zeropoint = {x: -10000, z: -10000, y: 1000}
 
-function init() {
+    function init() {
 
-    container = document.getElementById('container');
+	container = document.getElementById('container');
 
-    camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 20000);
+	camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 20000);
 
-    scene = new THREE.Scene();
+	scene = new THREE.Scene();
 
-    controls = new THREE.FirstPersonControls(camera);
-    controls.movementSpeed = 800;
-    controls.lookSpeed = 0.1;
+	controls = new THREE.FirstPersonControls(camera);
+	controls.movementSpeed = 800;
+	controls.lookSpeed = 0.1;
 
-    data = generateHeight(worldWidth, worldDepth);
+	data = generateHeight(worldWidth, worldDepth);
 
-    camera.position.y = zeropoint.y;
-    camera.position.x = zeropoint.x;
-    camera.position.z = zeropoint.z;
-    camera.lookAt(new THREE.Vector3(0,0,0));
+	camera.position.y = zeropoint.y;
+	camera.position.x = zeropoint.x;
+	camera.position.z = zeropoint.z;
+	camera.lookAt(new THREE.Vector3(0,0,0));
     
-    var geometry = new THREE.PlaneBufferGeometry(20000, 20000, worldWidth - 1, worldDepth - 1);
-    geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI / 2));
+	var geometry = new THREE.PlaneBufferGeometry(20000, 20000, worldWidth - 1, worldDepth - 1);
+	geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI / 2));
 
-    var vertices = geometry.attributes.position.array;
+	var vertices = geometry.attributes.position.array;
 
-    for (var i = 0, j = 0, l = vertices.length; i < l; i++, j += 3) {
+	for (var i = 0, j = 0, l = vertices.length; i < l; i++, j += 3) {
 
-	vertices[j + 1] = data[i] * 18;
+	    vertices[j + 1] = data[i] * 18;
 
+	}
+
+	texture = new THREE.Texture(generateTexture(data, worldWidth, worldDepth), THREE.UVMapping, THREE.ClampToEdgeWrapping, THREE.ClampToEdgeWrapping);
+    
+	texture.needsUpdate = true;
+
+	mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+		    map: texture
+		}));
+	scene.add(mesh);
+
+	var loader = new THREE.OBJLoader( manager );
+	loader.load( 'eiffel/effel-tower.obj', function ( object ) {
+		object.traverse( function ( child ) {
+		    } );
+		object.position.y = - 80;
+		scene.add( object );
+	    }, onProgress, onError );
+
+	renderer = new THREE.WebGLRenderer();
+	renderer.setClearColor(0xbfd1e5);
+	renderer.setPixelRatio(window.devicePixelRatio);
+	renderer.setSize(window.innerWidth, window.innerHeight);
+
+	container.innerHTML = "";
+
+	container.appendChild(renderer.domElement);
+
+	stats = new Stats();
+	stats.domElement.style.position = 'absolute';
+	stats.domElement.style.top = '0px';
+	container.appendChild(stats.domElement);
+
+	//
+
+	window.addEventListener('resize', onWindowResize, false);
+    
     }
-
-    texture = new THREE.Texture(generateTexture(data, worldWidth, worldDepth), THREE.UVMapping, THREE.ClampToEdgeWrapping, THREE.ClampToEdgeWrapping);
-    
-    texture.needsUpdate = true;
-
-    mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
-	map: texture
-    }));
-    scene.add(mesh);
-
-    renderer = new THREE.WebGLRenderer();
-    renderer.setClearColor(0xbfd1e5);
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    container.innerHTML = "";
-
-    container.appendChild(renderer.domElement);
-
-    stats = new Stats();
-    stats.domElement.style.position = 'absolute';
-    stats.domElement.style.top = '0px';
-    container.appendChild(stats.domElement);
-
-    //
-
-    window.addEventListener('resize', onWindowResize, false);
-    
-}
 
 function onWindowResize() {
 
@@ -119,10 +127,10 @@ function onWindowResize() {
 function generateHeight(width, height) {
 
     var size = width * height,
-    data = new Uint8Array(size),
-    perlin = new ImprovedNoise(),
-    quality = 1,
-    z = Math.random() * 100;
+	data = new Uint8Array(size),
+	perlin = new ImprovedNoise(),
+	quality = 1,
+	z = Math.random() * 100;
 
     var t = 0;
     var d = 1;
@@ -147,7 +155,7 @@ function generateHeight(width, height) {
 function generateTexture(data, width, height) {
 
     var canvas, canvasScaled, context, image, imageData,
-    level, diff, vector3, sun, shade;
+	level, diff, vector3, sun, shade;
 
     vector3 = new THREE.Vector3(0, 0, 0);
 
@@ -208,15 +216,15 @@ function generateTexture(data, width, height) {
     image = context.getImageData(0, 0, canvasScaled.width, canvasScaled.height);
     imageData = image.data;
 
-/*    for ( var i = 0, l = imageData.length; i < l; i += 4 ) {
+    /*    for ( var i = 0, l = imageData.length; i < l; i += 4 ) {
 
-	var v = ~~ ( Math.random() * 5 );
+	  var v = ~~ ( Math.random() * 5 );
 
-	imageData[ i ] += v;
-	imageData[ i + 1 ] += v;
-	imageData[ i + 2 ] += v;
+	  imageData[ i ] += v;
+	  imageData[ i + 1 ] += v;
+	  imageData[ i + 2 ] += v;
 
-    }*/
+	  }*/
 
     context.putImageData(image, 0, 0);
     
@@ -241,14 +249,14 @@ function animate() {
     deltay = camera.position.z - zeropoint.z;
     mapdomainx = 34.828637 - 34.743147;
     mapdomainy = 32.120765 - (32.120765 - 255 * 0.0003339453125)
-    newmapx = 34.743147 + (deltax / 20000) * mapdomainx;
+	newmapx = 34.743147 + (deltax / 20000) * mapdomainx;
     newmapy = 32.120765 - (deltay / 20000) * mapdomainy;
     if (prevmapx !== newmapx && prevmapy !== newmapy) {
 	prevmapx = newmapx;
 	prevmapy = newmapy;
 	console.log('setting map center', newmapx, newmapy);
 	var newlatlng = new google.maps.LatLng(newmapy, newmapx)
-	map.panTo(newlatlng);
+	    map.panTo(newlatlng);
 	
         marker.setPosition(newlatlng);
 
@@ -261,11 +269,11 @@ function animate() {
     
 
     marker.setIcon({
-	path:google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-	scale:3,
-	rotation: Math.atan2(dir.z, dir.x) * 180 / Math.PI + 90
-    })  
-}
+	    path:google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+		scale:3,
+		rotation: Math.atan2(dir.z, dir.x) * 180 / Math.PI + 90
+		})  
+	}
 
 function render() {
 
