@@ -74,7 +74,7 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 
 	};
 
-	FPMouseDown = this.onMouseDown = function ( event ) {
+	this.onMouseDown = function ( event ) {
 
 		if ( this.domElement !== document ) {
 
@@ -99,6 +99,8 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 		this.mouseDragOn = true;
 
 	};
+
+	FPMouseDown = this.onMouseDown.bind(this);
 
 	this.onMouseUp = function ( event ) {
 
