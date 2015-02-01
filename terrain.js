@@ -176,6 +176,7 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 		return false;
 		
 	    }
+	    FPMouseDown(event);
 	}
 
 
