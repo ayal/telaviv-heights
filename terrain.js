@@ -122,14 +122,41 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 		    map: texture
 		}));
 	scene.add(mesh);
+
+
 	objects = [];
-	var geometry1 = new THREE.CubeGeometry( 200, 200, 200 );	
-	var material1 = new THREE.MeshBasicMaterial( { color: 0xaa0000 } );
-	var mesh1 = new THREE.Mesh( geometry1, material1 );
-	mesh1.position.x = -1500
-	mesh1.position.z = 2500;
-	mesh1.position.y = 2000;
-	objects.push(mesh1);
+
+	var translate = function (lat, lng) {
+	    delta_lat = lat - 32.120765;
+	    deltay_lng = lng - 34.743147;
+
+	    mapdomainx = 34.828637 - 34.743147;
+	    mapdomainy = 32.120765 - (32.120765 - 255 * 0.0003339453125);
+
+	    newmapx = 34.743147 + (deltax / 20000) * mapdomainx;
+	    newmapy = 32.120765 - (deltay / 20000) * mapdomainy;
+
+	    worldx = -10000 + (delta_lat / (32.120765 - (32.120765 - 255 * 0.0003339453125))) * 20000;
+	    worldz = -10000 + (delta_lng / (34.828637 - 34.743147)) * 20000;
+
+	    return {x: worldx,z: worldz};
+	};
+
+	$yooshpost(function(r){
+		$.each(r.ResultSet.Events, function(i,e){
+			var l = e.Venue.Location;
+			var trns = translate(l.Latitude, l.Longitude);
+
+			var geometry1 = new THREE.CubeGeometry( 200, 200, 200 );	
+			var material1 = new THREE.MeshBasicMaterial( { color: 0xaa0000 } );
+			var mesh1 = new THREE.Mesh( geometry1, material1 );
+			mesh1.position.x = trns.x;
+			mesh1.position.z = trns.z;
+			mesh1.position.y = 2000;
+			objects.push(mesh1);
+
+		    });
+	    });
 
 	raycaster = new THREE.Raycaster();
 	mouse = new THREE.Vector2();
@@ -306,8 +333,8 @@ function animate() {
     deltax = camera.position.x - zeropoint.x;
     deltay = camera.position.z - zeropoint.z;
     mapdomainx = 34.828637 - 34.743147;
-    mapdomainy = 32.120765 - (32.120765 - 255 * 0.0003339453125)
-	newmapx = 34.743147 + (deltax / 20000) * mapdomainx;
+    mapdomainy = 32.120765 - (32.120765 - 255 * 0.0003339453125);
+    newmapx = 34.743147 + (deltax / 20000) * mapdomainx;
     newmapy = 32.120765 - (deltay / 20000) * mapdomainy;
     if (prevmapx !== newmapx && prevmapy !== newmapy) {
 	prevmapx = newmapx;
