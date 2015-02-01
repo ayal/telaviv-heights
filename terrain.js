@@ -108,7 +108,7 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 		intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
 		window.open('http://www.google.com');
 	    }
-/	}
+	}
 
 	//scene is global
 	scene.add(mesh1);
