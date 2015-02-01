@@ -83,7 +83,7 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 	mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
 		    map: texture
 		}));
-	//	scene.add(mesh);
+		scene.add(mesh);
 
 	var manager = new THREE.LoadingManager();
 	manager.onProgress = function ( item, loaded, total ) {
