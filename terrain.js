@@ -94,7 +94,7 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 
 	controls = new THREE.FirstPersonControls(camera);
 	controls.movementSpeed = 800;
-	controls.lookSpeed = 0.01;
+	controls.lookSpeed = 0.05;
 
 	data = generateHeight(worldWidth, worldDepth);
 
