@@ -169,7 +169,9 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 	    raycaster.setFromCamera( mouse, camera );
 	    var intersects = raycaster.intersectObjects( objects );
 	    if ( intersects.length > 0 ) {
-		rotateit = intersects[ 0 ].object;
+		setTimeout(function(){
+			rotateit = intersects[ 0 ].object;
+		    },2000);
 		console.log(intersects[ 0 ].object.yoosh);
 		window.open('http://activities.co.il/events/' + intersects[ 0 ].object.yoosh.MongoEventId,
 			    intersects[ 0 ].object.yoosh.MongoEventId, "width=320, height=700");
