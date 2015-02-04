@@ -229,8 +229,11 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 			verticalLookRatio = Math.PI / ( this.verticalMax - this.verticalMin );
 
 		}
-		
-		console.log(this.mouseX);
+
+ 		// don't look if mouse moves little
+		if (this.mouseX < 100) {
+		    actualLookSpeed = 0;
+		}		
 
 		this.lon += this.mouseX * actualLookSpeed;
 		if( this.lookVertical ) this.lat -= this.mouseY * actualLookSpeed * verticalLookRatio;
