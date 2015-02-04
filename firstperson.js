@@ -231,7 +231,7 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 		}
 
  		// don't look if mouse moves little
-		if (this.mouseX < 100) {
+		if (Math.abs(this.mouseX) < 50) {
 		    actualLookSpeed = 0;
 		}		
 
