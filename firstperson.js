@@ -229,6 +229,8 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 			verticalLookRatio = Math.PI / ( this.verticalMax - this.verticalMin );
 
 		}
+		
+		console.log('delta', delta);
 
 		this.lon += this.mouseX * actualLookSpeed;
 		if( this.lookVertical ) this.lat -= this.mouseY * actualLookSpeed * verticalLookRatio;
