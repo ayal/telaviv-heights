@@ -40,7 +40,7 @@ $.yooshpost = function (cb) {
           "Latitude": "32.097765",
           "Longitude": "34.743147"
         },
-        "time": "2015-02-02T00:38:14+02:00"
+        "time": new Date()
       }
     };
 
