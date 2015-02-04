@@ -34,7 +34,9 @@ $.yooshpost = function (cb) {
 
     var data =  {
 	"SearchFilters": {
-	"searchTerm": "טבעוני",
+	"tags": {$type: "Yoosh.SharedClasses.YooshTags, YooshSharedClassesDll",
+		Tags: ["אלקטרוני", "דאבסטפ", "trap", "טכנו", "האוס", "electro pop", "מינימל", "היפהופ", "אינדי", "אלטרנטיבי", "אייטיז", "רוק", "מש-אפ", "מזרחית", "ראפ", "ג'אז", "אירית", "שחורה", "רגאיי", "סלסה", "new wave", "post punk", "britpop", "פאנק", "twee pop", "פופ", "דאנסהול", "מטאל", "מיינסטרים", "RnB", "דאנס", "סינטפופ", "industrial", "גרוב", "ניינטיז", "ישראלי", "לינדיהופ", "צ'רלסטון", "בלוז", "סמבה", "בלבואה", "רומבה", "רגאטון", "בריטפופ", "hard dance", "פולק", "DnB", "מוזיקה"]
+	}
          "location": {
           "$type": "Yoosh.SharedClasses.YooshLocation, YooshSharedClassesDll",
           "Latitude": "32.097765",
