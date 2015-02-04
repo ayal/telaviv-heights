@@ -34,7 +34,7 @@ $.yooshpost = function (cb) {
 
     var data =  {
 	"SearchFilters": {
-	"SearchTerm": "טבעוני",
+	"searchTerm": "טבעוני",
          "location": {
           "$type": "Yoosh.SharedClasses.YooshLocation, YooshSharedClassesDll",
           "Latitude": "32.097765",
