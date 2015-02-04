@@ -40,7 +40,7 @@ $.yooshpost = function (cb) {
           "Latitude": "32.097765",
           "Longitude": "34.743147"
         },
-        "time": new Date()
+        "time": moment(new Date()).format("YYYY-MM-DDTHH:mm:ssZ")
       }
     };
 
