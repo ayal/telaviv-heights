@@ -176,7 +176,7 @@ zeropoint = {x: -10000, z: -10000, y: 1000}
 			rotateit = intersects[ 0 ].object;
 		    },2000);
 		console.log(intersects[ 0 ].object.yoosh);
-		window.open('http://ayal.t-cats.com/events/' + intersects[ 0 ].object.yoosh.MongoEventId,
+		window.open('http://stg.t-cats.com/events/' + intersects[ 0 ].object.yoosh.MongoEventId,
 			    intersects[ 0 ].object.yoosh.MongoEventId, "width=320, height=700");
 		event.preventDefault();
 		return false;
