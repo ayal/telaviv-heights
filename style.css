@@ -51,21 +51,25 @@ html, body {
 }
 
 #map-wrap {
-  position: fixed;
+  position: fixed !important;
   top: 0;
   left: 0;
-  width: 280px;
-  height: 220px;
+  width: 280px !important;
+  height: 220px !important;
+  max-height: 220px !important;
   z-index: 15;
   border-right: 2px solid rgba(255, 255, 255, 0.3);
   border-bottom: 2px solid rgba(255, 255, 255, 0.3);
   border-bottom-right-radius: 8px;
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
-#map-canvas {
-  width: 280px;
-  height: 220px;
+#map-canvas,
+#map-canvas.leaflet-container {
+  width: 280px !important;
+  height: 220px !important;
+  max-height: 220px !important;
+  position: relative !important;
 }
 
 #map-zoom {
