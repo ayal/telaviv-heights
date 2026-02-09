@@ -1,36 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tel Aviv Terrain</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKP0uWVADerZRG5y48HfvmIsrkQOSyn9Y"></script>
-    <script src="bigdata.js"></script>  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
-  		<div id="info">Tel Aviv terrain <br />(left click: forward, right click: backward)</div>
-
- <div id="map-canvas" style="height:250px;"></div>
-
+  <div id="info">
+    Tel Aviv Terrain<br>
+    <span class="hint">Left click: forward, right click: backward, mouse: look around</span>
+  </div>
+  <div id="map-wrap">
+    <div id="map-canvas"></div>
+    <div id="map-zoom">
+      <button id="zoom-in">+</button>
+      <button id="zoom-out">&minus;</button>
+    </div>
+  </div>
+  <div id="export-buttons">
+    <button id="export-3mf">Export 3MF</button>
+    <button id="export-stl">Export STL</button>
+    <button id="export-glb">Export GLB</button>
+  </div>
   <div id="container"></div>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js"></script>
 
-		
-		<script src="http://threejs.org/examples/js/controls/FirstPersonControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 
-		<script src="http://threejs.org/examples/js/ImprovedNoise.js"></script>
-		<script src="http://threejs.org/examples/js/Detector.js"></script>
-		<script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+  <script src="bigdata.js"></script>
 
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
 
-		<script src="terrain.js"></script>
-  
+  <script type="module" src="terrain.js"></script>
 </body>
 </html>

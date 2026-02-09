@@ -1,37 +1,145 @@
-  html, body, #map-canvas {
-        height: 100%;
-        margin: 0px;
-        padding: 0px
-      }
-
-#map-canvas {
- width:300px;
- position:absolute; 
-  
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body {
-	  background:black;
-				color: #61443e;
-				font-family:Monospace;
-				font-size:13px;
-				text-align:center;
-
-				margin: 0px;
-				overflow: hidden;
-      position:relative;
-      width:100%;
-			}
-
-
-#info {
-				position: absolute;
-				top: 0px; width: 100%;
-				padding: 5px;
-  font-size:20px
-			}
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: #ccc;
+}
 
 #container {
-  width:100%;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
+#container canvas {
+  display: block;
+}
+
+#info {
+  position: absolute;
+  top: 16px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.02em;
+}
+
+#info .hint {
+  font-size: 13px;
+  font-weight: 400;
+  opacity: 0.7;
+  display: block;
+  margin-top: 4px;
+}
+
+#map-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 220px;
+  z-index: 10;
+  border-right: 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom-right-radius: 8px;
+  overflow: hidden;
+}
+
+#map-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+#map-zoom {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+#map-zoom button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+#map-zoom button:hover {
+  background: #fff;
+}
+
+#export-buttons {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  display: flex;
+  gap: 6px;
+}
+
+#export-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(40, 40, 40, 0.85);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: background 0.2s;
+}
+
+#export-buttons button:hover {
+  background: rgba(60, 60, 60, 0.95);
+}
+
+#export-buttons button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.peak-label {
+  background: none !important;
+  border: none !important;
+}
+
+.peak-label-inner {
+  background: rgba(200, 30, 30, 0.9);
+  color: #fff;
+  font-size: 5px;
+  font-weight: 600;
+  padding: 1px 2px;
+  border-radius: 2px;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.1;
+}
+
+.peak-label-inner small {
+  font-weight: 400;
+  font-size: 4px;
+}

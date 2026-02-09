@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Viewer — Tel Aviv Terrain</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; overflow: hidden; background: #1a1a2e; }
+    #info {
+      position: absolute; top: 16px; width: 100%; text-align: center;
+      z-index: 10; pointer-events: none;
+      font: 600 20px/1.4 system-ui, sans-serif; color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+    #info small { font-size: 13px; font-weight: 400; opacity: 0.6; display: block; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <div id="info">
+    Tel Aviv Terrain — 3MF Preview
+    <small>Drag to orbit &middot; Scroll to zoom &middot; Right-drag to pan</small>
+  </div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { ThreeMFLoader } from 'three/addons/loaders/3MFLoader.js';
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x1a1a2e);
+
+    const camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 0.01, 10000);
+    camera.position.set(150, 120, 200);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(devicePixelRatio);
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
+    document.body.appendChild(renderer.domElement);
+
+    // Lighting
+    scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    dirLight.position.set(1, 2, 1);
+    scene.add(dirLight);
+    const dirLight2 = new THREE.DirectionalLight(0x8888ff, 0.4);
+    dirLight2.position.set(-1, 0.5, -1);
+    scene.add(dirLight2);
+
+    // Controls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.08;
+    controls.target.set(0, 0, 0);
+
+    // Load 3MF
+    const loader = new ThreeMFLoader();
+    loader.load('telaviv-terrain.3mf', (group) => {
+      // Center the model
+      const box = new THREE.Box3().setFromObject(group);
+      const center = box.getCenter(new THREE.Vector3());
+      const size = box.getSize(new THREE.Vector3());
+      group.position.sub(center);
+
+      scene.add(group);
+      controls.target.set(0, 0, 0);
+
+      // Adjust camera
+      const maxDim = Math.max(size.x, size.y, size.z);
+      camera.position.set(maxDim * 0.8, maxDim * 0.6, maxDim * 0.8);
+      camera.near = maxDim * 0.001;
+      camera.far = maxDim * 20;
+      camera.updateProjectionMatrix();
+
+      console.log(`3MF loaded — ${size.x.toFixed(1)} × ${size.y.toFixed(1)} × ${size.z.toFixed(1)} mm`);
+    }, undefined, (err) => console.error('Failed to load 3MF:', err));
+
+    // Resize
+    addEventListener('resize', () => {
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+    });
+
+    // Render loop
+    (function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    })();
+  </script>
+</body>
+</html>

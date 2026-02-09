@@ -1,0 +1,23 @@
+{
+  "name": "telaviv-heights",
+  "version": "1.0.0",
+  "description": "experiments with the terrain of tel aviv",
+  "main": "bigdata-new.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayal/telaviv-heights.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayal/telaviv-heights/issues"
+  },
+  "homepage": "https://github.com/ayal/telaviv-heights#readme",
+  "dependencies": {
+    "canvas": "^3.2.1"
+  }
+}
